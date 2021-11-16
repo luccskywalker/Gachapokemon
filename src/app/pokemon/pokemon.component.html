@@ -1,0 +1,51 @@
+<p>pokemon works!</p>
+
+<button (click)="listarTodos()" ng-click="showTodos=showTodos"> Listar Todos</button>
+<button (click)="listarPorTipoF()"> Listar Tipo Fogo</button>
+<button (click)="listarPorJogo()"> Listar Todos</button>
+
+<div [hidden]="isDisplay">
+  <table>
+    <tr>
+      <th>Nome</th>
+      <th>nº</th>
+      <th>Imagem</th>
+      <th>tipo 1</th>
+      <th>tipo 2</th>
+    </tr>
+    <tr *ngFor="let p of listaFiltrada">
+      <td>{{p.name}}</td>
+      <td *ngIf="p.status">{{p.status.id}}</td>
+      <td *ngIf="p.status"><img [src]="p.status.sprites.front_shiny" alt="p.name"></td>
+      <ng-container *ngFor="let v of p?.status?.types">
+        <td>{{ v.type.name }}</td>
+      </ng-container>
+
+    </tr>
+
+  </table>
+</div>
+
+<div [hidden]="isDisplayF">
+
+  <table>
+    <tr>
+      <th>Nome</th>
+      <th>nº</th>
+      <th>Imagem</th>
+      <th>tipo 1</th>
+      <th>tipo 2</th>
+    </tr>
+    <tr *ngFor="let p of listaFiltrada">
+      <ng-container *ngFor="let v of p?.status?.types">
+        <ng-container *ngIf="v.type.name == 'fire'">
+          <td>{{p.name}}</td>
+          <td *ngIf="p.status">{{p.status.id}}</td>
+          <td *ngIf="p.status"><img [src]="p.status.sprites.front_shiny" alt="p.name"></td>
+          <td>{{ v.type.name }}</td>
+        </ng-container>
+      </ng-container>
+    </tr>
+
+  </table>
+</div>
