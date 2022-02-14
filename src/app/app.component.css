@@ -1,0 +1,60 @@
+:host {
+  text-align: center;
+}
+
+nz-header,
+nz-footer {
+  background: #7dbcea;
+  color: #fff;
+}
+
+nz-footer {
+  line-height: 1.5;
+}
+
+nz-sider {
+  background: #3ba0e9;
+  color: #fff;
+  line-height: 120px;
+}
+
+nz-content {
+  background: rgba(16, 142, 233, 1);
+  color: #fff;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    background-color: rgb(114, 114, 114);
+  }
+}
+
+/* Loading ... Animation */
+@keyframes loading {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 13px;
+  }
+}
+
+@-webkit-keyframes loading {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 13px;
+  }
+}
+
+.dotdotdot {
+  animation: loading 1s;
+  -webkit-animation: loading 1s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}

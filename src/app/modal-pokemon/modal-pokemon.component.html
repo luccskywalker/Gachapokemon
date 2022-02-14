@@ -1,0 +1,65 @@
+<!-- <div class="mostraTags" *ngIf="tags.length > 2; else content">
+  <div class="tag">
+    <div class="mostraTags">
+      <div class="dot" [style.background-color]="tags[0].color"></div>
+      <span class="textOverflow"> {{ tags[0].name }}</span>
+    </div>
+  </div>
+</div>
+
+<ng-template class="mostraTags" #content>
+  <div class="mostraTags">
+    <div class="tag">
+      <div class="mostraTags">
+        <div class="dot" [style.background-color]="tags[0].color"></div>
+        <span class="textOverflow"> {{ tags[0].name }}</span>
+      </div>
+    </div>
+
+    <span
+      class="tag"
+      nz-popover
+      [nzPopoverContent]="contentTemplate"
+      nzPopoverPlacement="bottom"
+      >+ {{ tags.length }}</span
+    >
+  </div>
+</ng-template>
+
+<ng-template #contentTemplate>
+  <div *ngFor="let itemLista of tags">
+    <div class="mostraTags">
+      <div class="dot" [style.background-color]="itemLista.color"></div>
+      <span class="textOverflow"> {{ itemLista.name }}</span>
+    </div>
+  </div>
+</ng-template> 
+
+
+
+<button
+  nz-button
+  nz-popover
+  [nzPopoverContent]="contentTemplate"
+  nzPopoverPlacement="bottom"
+>
+  Render Template
+</button>
+-->
+
+<button nz-button [nzType]="'primary'" (click)="showModal()">
+  <span>Show Modal</span>
+</button>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="The first Modal"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+  </ng-container>
+</nz-modal>

@@ -1,74 +1,36 @@
-<p>pokemon works!</p>
+<button
+  nz-button
+  zType="default"
+  (click)="listarTodos()"
+  ng-click="showTodos=showTodos"
+>
+  Listar Todos
+</button>
 
-<button (click)="listarTodos()" ng-click="showTodos=showTodos"> Listar Todos</button>
-<button (click)="filtro('fire')"> Filtrar Fogo</button>
+<ng-container>
+  <p>Selecione por tipo :</p>
+  <nz-select
+    nzShowSearch
+    nzAllowClear
+    nzPlaceHolder="Selecione o tipo"
+    [ngModel]="selectedItem"
+    (ngModelChange)="onChange($event)"
+  >
+    <nz-option
+      *ngFor="let item of listaTipos"
+      [nzLabel]="item.name"
+      [nzValue]="item.name"
+    ></nz-option>
+  </nz-select>
+</ng-container>
 
-<button (click)="filtro('water')"> Filtrar agua</button>
-<button (click)="filtro()"> Filtrar Tudo</button>
-<input (keydown.enter) =  "filtroI($event)" >
+<app-mostra-poke [listaTabela]="listaFiltrada"></app-mostra-poke>
 
-
-<div [hidden]="isDisplay">
-  <table>
-    <tr>
-      <th>Nome</th>
-      <th>nº</th>
-      <th>Imagem</th>
-      <th>tipo 1</th>
-      <th>tipo 2</th>
-    </tr>
-    <tr *ngFor="let p of listaFiltrada">
-      <td>{{p.name}}</td>
-      <td *ngIf="p.status">{{p.status.id}}</td>
-      <td *ngIf="p.status"><img [src]="p.status.sprites.front_shiny" alt="p.name"></td>
-      <ng-container *ngFor="let v of p?.status?.types">
-        <td>{{ v.type.name }}</td>
-      </ng-container>
-
-    </tr>
-
-  </table>
-</div>
-
-<div [hidden]="isDisplayF">
- <table>
-    <tr>
-      <th>Nome</th>
-      <th>nº</th>
-      <th>Imagem</th>
-      <th>tipo 1</th>
-      <th>tipo 2</th>
-    </tr>
-    <tr *ngFor="let p of pF">
-      <td>{{p.name}}</td>
-      <td *ngIf="p.status">{{p.status.id}}</td>
-      <td *ngIf="p.status"><img [src]="p.status.sprites.front_shiny" alt="p.name"></td>
-      <ng-container *ngFor="let v of p?.status?.types">
-        <td>{{ v.type.name }}</td>
-      </ng-container>
-
-    </tr>
-  </table> 
-
-
-  <!-- <table>
-    <tr>
-      <th>Nome</th>
-      <th>nº</th>
-      <th>Imagem</th>
-      <th>tipo 1</th>
-      <th>tipo 2</th>
-    </tr>
-    <tr *ngFor="let p of listaFiltrada">
-      <ng-container *ngFor="let v of p?.status?.types">
-        <ng-container *ngIf="v.type.name === 'fire'">
-          <td>{{p.name}}</td>
-          <td *ngIf="p.status">{{p.status.id}}</td>
-          <td *ngIf="p.status"><img [src]="p.status.sprites.front_shiny" alt="p.name"></td>
-          <td>{{ v.type.name }}</td>
-        </ng-container>
-      </ng-container>
-    </tr>
-
-  </table> -->
-</div>
+<nz-pagination
+  [nzPageIndex]="1"
+  [nzTotal]="150"
+  [nzPageSize]="10"
+  (nzPageIndexChange)="onPageIndexChange($event)"
+  id="paginacao"
+  nzSimple
+></nz-pagination>

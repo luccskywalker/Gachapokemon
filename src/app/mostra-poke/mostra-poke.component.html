@@ -1,0 +1,18 @@
+<nz-table class="altura" [nzFrontPagination]="false" [nzData]="listaTabela">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>nº</th>
+      <th>Imagem</th>
+      <th>tipo 1</th>
+      <th>tipo 2</th>
+      <th>Informações</th>
+      <th>Favoritos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pokemon of listaTabela">
+      <app-lista-pokemon [pokemon]="pokemon"></app-lista-pokemon>
+    </tr>
+  </tbody>
+</nz-table>
