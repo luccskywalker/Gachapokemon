@@ -17,6 +17,7 @@ export class PokemonComponent {
   public isDisplayF = false;
   public pF: any = [];
   public selectedItem: any;
+  public contador: any;
 
   constructor(public pokemonService: PokemonService) {
     this.listarTipos();

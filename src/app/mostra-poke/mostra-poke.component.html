@@ -12,7 +12,22 @@
   </thead>
   <tbody>
     <tr *ngFor="let pokemon of listaTabela">
-      <app-lista-pokemon [pokemon]="pokemon"></app-lista-pokemon>
+      <td>{{ pokemon.name }}</td>
+      <td *ngIf="pokemon.status">{{ pokemon.status.id }}</td>
+      <td *ngIf="pokemon.status">
+        <img [src]="pokemon.status.sprites.front_shiny" alt="pokemon.name" />
+      </td>
+      <ng-container *ngFor="let v of pokemon?.status?.types">
+        <td>{{ v.type.name }}</td>
+      </ng-container>
+      <td>
+        <a> <app-modal-pokemon></app-modal-pokemon></a>
+      </td>
+      <td>
+        <a>
+          <ng-container *ngIf="pokemon.like == false"> </ng-container>
+        </a>
+      </td>
     </tr>
   </tbody>
 </nz-table>
