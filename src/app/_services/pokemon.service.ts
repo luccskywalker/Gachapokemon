@@ -4,6 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { from, mergeAll, mergeMap, Observable, ReplaySubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
+interface PokemonCut {
+  name: string;
+  url: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -26,17 +31,19 @@ export class PokemonService {
     const link = 'https://pokeapi.co/api/v2/pokemon/';
   }
   get listaPokemon(): Observable<any> {
-    return this.httpClient.get<any>(this.url).pipe(
-      map((res) => res),
-      tap((res) => {
-        res.results.map((resPokemons: any) => {
-          this.httpClient
-            .get<any>(resPokemons.url)
-            .pipe(map((res) => res))
-            .subscribe((res) => (resPokemons.status = res));
-        });
-      })
-    );
+    return this.httpClient
+      .get<{ results: PokemonCut[]; count: number; next: string }>(this.url)
+      .pipe(
+        map((res) => res),
+        tap((res) => {
+          res.results.map((resPokemons: any) => {
+            this.httpClient
+              .get<any>(resPokemons.url)
+              .pipe(map((res) => res))
+              .subscribe((res) => (resPokemons.status = res));
+          });
+        })
+      );
   }
 
   public mudaOffsetLimit(valor: any, limit: any) {

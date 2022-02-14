@@ -25,7 +25,21 @@
       </td>
       <td>
         <a>
-          <ng-container *ngIf="pokemon.like == false"> </ng-container>
+          <ng-container>
+            <i
+              nz-icon
+              nzType="heart"
+              nzTheme="outline"
+              (click)="curte(pokemon)"
+            ></i> </ng-container
+          ><ng-container *ngIf="pokemon.like === true">
+            <i
+              nz-icon
+              nzType="heart"
+              nzTheme="fill"
+              (click)="curte(pokemon)"
+            ></i>
+          </ng-container>
         </a>
       </td>
     </tr>

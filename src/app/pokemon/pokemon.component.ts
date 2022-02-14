@@ -9,7 +9,7 @@ import { PokemonService } from '../_services/pokemon.service';
 })
 export class PokemonComponent {
   public lista: any = [];
-  public listaFiltrada: any = [];
+  public listaFiltrada!: Pokemon[];
   public lista2: any = [];
   public listaTipos: any = [];
   public pokemon: Pokemon[] = [];
@@ -26,9 +26,9 @@ export class PokemonComponent {
 
   ngOnInit(): void {
     this.pokemonService.listaPokemon.subscribe((res) => {
-      res.results.map((element: any) => {
-        element.like = false;
-      });
+      // res.results.map((element: any) => {
+      //   element.like = false;
+      // });
       this.listaFiltrada = res.results;
       console.log(this.listaFiltrada);
     });
@@ -37,6 +37,10 @@ export class PokemonComponent {
   listarTodos() {
     this.listaFiltrada = [];
     this.pokemonService.listaPokemon.subscribe((res: any) => {
+      console.log(res);
+      // res.results.map((element: any) => {
+      //   element.like = true;
+      // });
       this.listaFiltrada = res.results;
     });
   }

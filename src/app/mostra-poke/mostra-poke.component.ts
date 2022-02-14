@@ -12,6 +12,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 export class MostraPokeComponent implements OnInit {
   @Input()
   public listaTabela: any = [];
+
   constructor(
     private pokemonServico: PokemonService,
     private modalService: NzModalService
@@ -19,5 +20,9 @@ export class MostraPokeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.listaTabela);
+  }
+  curte(pokemonLike: any) {
+    console.log(pokemonLike);
+    pokemonLike.like = !pokemonLike.like;
   }
 }
