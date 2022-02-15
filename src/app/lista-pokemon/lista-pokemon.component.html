@@ -1,11 +1,13 @@
-<!-- <td>{{ pokemon.name }}</td>
-<td *ngIf="pokemon.status">{{ pokemon.status.id }}</td>
-<td *ngIf="pokemon.status">
-  <img [src]="pokemon.status.sprites.front_shiny" alt="pokemon.name" />
-</td>
-<ng-container *ngFor="let v of pokemon?.status?.types">
-  <td>{{ v.type.name }}</td>
-</ng-container>
-<td>
-  <a> <app-modal-pokemon [pokemon]="pokemon"></app-modal-pokemon></a>
-</td> -->
+<tr *ngFor="let pokemon of listaTabela">
+  <td>{{ pokemon.name }}</td>
+  <td *ngIf="pokemon.status">{{ pokemon.status.id }}</td>
+  <td *ngIf="pokemon.status">
+    <img [src]="pokemon.status.sprites.front_shiny" alt="pokemon.name" />
+  </td>
+  <ng-container *ngFor="let v of pokemon?.status?.types">
+    <td>{{ v.type.name }}</td>
+  </ng-container>
+  <td>
+    <a> <app-modal-pokemon [pokemon]="pokemon"></app-modal-pokemon></a>
+  </td>
+</tr>

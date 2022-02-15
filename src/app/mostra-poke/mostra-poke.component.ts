@@ -17,16 +17,13 @@ export class MostraPokeComponent implements OnInit {
     private modalService: NzModalService
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.listaTabela);
-  }
+  ngOnInit(): void {}
   curte(pokemonLike: any) {
     console.log(pokemonLike);
     pokemonLike.like = !pokemonLike.like;
   }
   verificaEventoModal($event: boolean, pokemonLike: any) {
     this.curtida = $event;
-    console.log(this.curtida);
     pokemonLike.like = !pokemonLike.like;
   }
 }

@@ -8,10 +8,17 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ListaFavoritosComponent implements OnInit {
   @Input()
   public listaFavoritos: any[] = [];
+  public listaFavoritos2: any[] = [];
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.listaFavoritos2 = this.listaFavoritos.map((res: any) => {
+      console.log('consolada de res dos favoritos' + res);
+      if (res.results.like === true) {
+      }
+    });
+  }
 
   listarFavoritos(listaPokemons: any) {
     listaPokemons.map((res: any) => {
@@ -19,6 +26,5 @@ export class ListaFavoritosComponent implements OnInit {
       if (res.results.like === true) {
       }
     });
-    this.listaFavoritos = [];
   }
 }

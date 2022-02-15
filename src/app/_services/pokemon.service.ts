@@ -16,7 +16,7 @@ export class PokemonService {
   public pokemon: Pokemon[] = [];
   private lista: any;
   private offset: number = 0;
-  private limit: number = 150;
+  private limit: number = 10;
   private tipo: string = '';
   private url: string =
     'https://pokeapi.co/api/v2/pokemon' +

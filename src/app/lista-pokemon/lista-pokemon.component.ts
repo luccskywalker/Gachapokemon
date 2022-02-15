@@ -8,9 +8,11 @@ import { PokemonService } from '../_services/pokemon.service';
 })
 export class ListaPokemonComponent implements OnInit {
   @Input()
-  public listaFiltrada2: any = [];
+  listaFiltrada2: any = [];
   @Input()
-  public pokemon: any;
+  pokemon: any;
+  @Input()
+  listaTabela: any = [];
 
   constructor(private pokemonServico: PokemonService) {}
 
