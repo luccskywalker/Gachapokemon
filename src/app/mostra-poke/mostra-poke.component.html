@@ -1,3 +1,4 @@
+<h1>Lista Completa</h1>
 <nz-table class="altura" [nzFrontPagination]="false" [nzData]="listaTabela">
   <thead>
     <tr>
@@ -21,26 +22,25 @@
         <td>{{ v.type.name }}</td>
       </ng-container>
       <td>
-        <a> <app-modal-pokemon></app-modal-pokemon></a>
+        <a>
+          <app-modal-pokemon
+            [pokemon]="pokemon"
+            (curte2)="verificaEventoModal($event, pokemon)"
+          ></app-modal-pokemon
+        ></a>
       </td>
       <td>
-        <a>
-          <ng-container>
-            <i
-              nz-icon
-              nzType="heart"
-              nzTheme="outline"
-              (click)="curte(pokemon)"
-            ></i> </ng-container
-          ><ng-container *ngIf="pokemon.like === true">
-            <i
-              nz-icon
-              nzType="heart"
-              nzTheme="fill"
-              (click)="curte(pokemon)"
-            ></i>
-          </ng-container>
-        </a>
+        <ng-container *ngIf="pokemon.like == true">
+          <i nz-icon nzType="heart" nzTheme="fill" (click)="curte(pokemon)"></i>
+        </ng-container>
+        <ng-container *ngIf="pokemon.like == false">
+          <i
+            nz-icon
+            nzType="heart"
+            nzTheme="outline"
+            (click)="curte(pokemon)"
+          ></i>
+        </ng-container>
       </td>
     </tr>
   </tbody>

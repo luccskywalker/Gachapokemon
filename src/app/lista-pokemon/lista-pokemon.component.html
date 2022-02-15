@@ -1,4 +1,4 @@
-<td>{{ pokemon.name }}</td>
+<!-- <td>{{ pokemon.name }}</td>
 <td *ngIf="pokemon.status">{{ pokemon.status.id }}</td>
 <td *ngIf="pokemon.status">
   <img [src]="pokemon.status.sprites.front_shiny" alt="pokemon.name" />
@@ -7,11 +7,5 @@
   <td>{{ v.type.name }}</td>
 </ng-container>
 <td>
-  <a> <app-modal-pokemon></app-modal-pokemon></a>
-</td>
-<td>a</td>
-<td></td>
-
-<!-- <div style="background-color: aquamarine">
-  <span>OILA</span>
-</div> -->
+  <a> <app-modal-pokemon [pokemon]="pokemon"></app-modal-pokemon></a>
+</td> -->

@@ -53,13 +53,28 @@
 
 <nz-modal
   [(nzVisible)]="isVisible"
-  nzTitle="The first Modal"
+  nzTitle="Informações Pokemon"
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
 >
   <ng-container *nzModalContent>
-    <p>Content one</p>
-    <p>Content two</p>
-    <p>Content three</p>
+    <ng-container>
+      <td>{{ pokemon.name }}</td>
+      <td *ngIf="pokemon.status">{{ pokemon.status.id }}</td>
+      <td *ngIf="pokemon.status">
+        <img [src]="pokemon.status.sprites.front_shiny" alt="pokemon.name" />
+      </td>
+      <ng-container *ngFor="let v of pokemon?.status?.types">
+        {{ v.type.name }}
+      </ng-container>
+      <ng-container>
+        <i
+          nz-icon
+          nzType="heart"
+          [nzTheme]="pokemon.like ? 'fill' : 'outline'"
+          (click)="likeModal()"
+        ></i>
+      </ng-container>
+    </ng-container>
   </ng-container>
 </nz-modal>

@@ -19,31 +19,24 @@ export class PokemonComponent {
   public selectedItem: any;
   public contador: any;
 
-  constructor(public pokemonService: PokemonService) {
-    this.listarTipos();
-    this.listarTodos();
-  }
+  constructor(public pokemonService: PokemonService) {}
 
   ngOnInit(): void {
-    this.pokemonService.listaPokemon.subscribe((res) => {
-      // res.results.map((element: any) => {
-      //   element.like = false;
-      // });
-      this.listaFiltrada = res.results;
-      console.log(this.listaFiltrada);
-    });
+    this.listarTodos();
+    this.listarTipos();
   }
 
   listarTodos() {
     this.listaFiltrada = [];
     this.pokemonService.listaPokemon.subscribe((res: any) => {
       console.log(res);
-      // res.results.map((element: any) => {
-      //   element.like = true;
-      // });
-      this.listaFiltrada = res.results;
+      res.results.map((element: any) => {
+        element.like = false;
+        this.listaFiltrada = res.results;
+      });
     });
   }
+
   filtroI(event: any) {
     console.log('teste', event.target.value);
     this.isDisplayF = false;

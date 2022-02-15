@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-pokemon',
@@ -6,24 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-pokemon.component.css'],
 })
 export class ModalPokemonComponent implements OnInit {
-  isVisible = false;
-  // public tags: any = [
-  //   {
-  //     id: 4,
-  //     name: 'Atendimento com valor',
-  //     stamp: true,
-  //     color: '#66cdaa',
-  //     internal: false,
-  //   },
-  //   {
-  //     id: 144,
-  //     name: 'Alteração de endereço',
-  //     stamp: true,
-  //     color: '#DDDDDD',
-  //     internal: false,
-  //   },
-  // ];
+  @Input()
+  public pokemon: any;
 
+  @Output()
+  curte2: EventEmitter<boolean> = new EventEmitter();
+
+  isVisible = false;
   constructor() {}
 
   ngOnInit(): void {}
@@ -40,5 +29,9 @@ export class ModalPokemonComponent implements OnInit {
   handleCancel(): void {
     console.log('Button cancel clicked!');
     this.isVisible = false;
+  }
+
+  likeModal() {
+    this.curte2.emit(true);
   }
 }

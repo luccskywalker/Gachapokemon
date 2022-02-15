@@ -1,0 +1,26 @@
+<p>lista-favoritos works!</p>
+
+<h1>Lista Completa</h1>
+<nz-table class="altura" [nzFrontPagination]="false" [nzData]="listaFavoritos">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>nº</th>
+      <th>Imagem</th>
+      <th>tipo 1</th>
+      <th>tipo 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pokemon of listaFavoritos">
+      <td>{{ pokemon.name }}</td>
+      <td *ngIf="pokemon.status">{{ pokemon.status.id }}</td>
+      <td *ngIf="pokemon.status">
+        <img [src]="pokemon.status.sprites.front_shiny" alt="pokemon.name" />
+      </td>
+      <ng-container *ngFor="let v of pokemon?.status?.types">
+        <td>{{ v.type.name }}</td>
+      </ng-container>
+    </tr>
+  </tbody>
+</nz-table>

@@ -1,39 +1,43 @@
-<input [(ngModel)]="contador" />
-<p>Hello {{ contador }}</p>
+<div nz-row>
+  <div nz-col nzSpan="12" style="width: 90%">
+    <button
+      nz-button
+      zType="default"
+      (click)="listarTodos()"
+      ng-click="showTodos=showTodos"
+    >
+      Listar Todos
+    </button>
 
-<button
-  nz-button
-  zType="default"
-  (click)="listarTodos()"
-  ng-click="showTodos=showTodos"
->
-  Listar Todos
-</button>
+    <ng-container>
+      <p>Selecione por tipo :</p>
+      <nz-select
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder="Selecione o tipo"
+        [ngModel]="selectedItem"
+        (ngModelChange)="onChange($event)"
+      >
+        <nz-option
+          *ngFor="let item of listaTipos"
+          [nzLabel]="item.name"
+          [nzValue]="item.name"
+        ></nz-option>
+      </nz-select>
+    </ng-container>
 
-<ng-container>
-  <p>Selecione por tipo :</p>
-  <nz-select
-    nzShowSearch
-    nzAllowClear
-    nzPlaceHolder="Selecione o tipo"
-    [ngModel]="selectedItem"
-    (ngModelChange)="onChange($event)"
-  >
-    <nz-option
-      *ngFor="let item of listaTipos"
-      [nzLabel]="item.name"
-      [nzValue]="item.name"
-    ></nz-option>
-  </nz-select>
-</ng-container>
+    <app-mostra-poke [listaTabela]="listaFiltrada"></app-mostra-poke>
 
-<app-mostra-poke [listaTabela]="listaFiltrada"></app-mostra-poke>
-
-<nz-pagination
-  [nzPageIndex]="1"
-  [nzTotal]="150"
-  [nzPageSize]="10"
-  (nzPageIndexChange)="onPageIndexChange($event)"
-  id="paginacao"
-  nzSimple
-></nz-pagination>
+    <nz-pagination
+      [nzPageIndex]="1"
+      [nzTotal]="150"
+      [nzPageSize]="10"
+      (nzPageIndexChange)="onPageIndexChange($event)"
+      id="paginacao"
+      nzSimple
+    ></nz-pagination>
+  </div>
+  <div nz-col nzSpan="12">
+    <app-lista-favoritos></app-lista-favoritos>
+  </div>
+</div>

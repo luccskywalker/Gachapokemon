@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PokemonComponent } from '../pokemon/pokemon.component';
-import { Pokemon } from '../_module/Pokemon';
 import { PokemonService } from '../_services/pokemon.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 
@@ -12,6 +10,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 export class MostraPokeComponent implements OnInit {
   @Input()
   public listaTabela: any = [];
+  public curtida: any;
 
   constructor(
     private pokemonServico: PokemonService,
@@ -23,6 +22,11 @@ export class MostraPokeComponent implements OnInit {
   }
   curte(pokemonLike: any) {
     console.log(pokemonLike);
+    pokemonLike.like = !pokemonLike.like;
+  }
+  verificaEventoModal($event: boolean, pokemonLike: any) {
+    this.curtida = $event;
+    console.log(this.curtida);
     pokemonLike.like = !pokemonLike.like;
   }
 }

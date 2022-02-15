@@ -26,6 +26,9 @@ import { ModalPokemonComponent } from './modal-pokemon/modal-pokemon.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { ListaFavoritosComponent } from './lista-favoritos/lista-favoritos.component';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+
 registerLocaleData(en);
 
 @NgModule({
@@ -36,6 +39,7 @@ registerLocaleData(en);
     ListaPokemonComponent,
     MostraPokeComponent,
     ModalPokemonComponent,
+    ListaFavoritosComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,7 @@ registerLocaleData(en);
     NzModalModule,
     NzPopoverModule,
     NzIconModule,
+    NzGridModule,
   ],
   providers: [PokemonService, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
