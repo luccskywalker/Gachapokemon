@@ -14,7 +14,6 @@ interface PokemonCut {
 })
 export class PokemonService {
   public pokemon: Pokemon[] = [];
-  private lista: any;
   private offset: number = 0;
   private limit: number = 10;
   private tipo: string = '';

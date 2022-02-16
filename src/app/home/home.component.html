@@ -1,0 +1,32 @@
+<h1>Bem Vindos ao Mundo de Pokemon</h1>
+<span>Por onde deseja começar sua aventura?</span>
+<div>
+  <nz-space>
+    <nz-card nzHoverable style="width: 240px" [nzCover]="coverTemplate">
+      <nz-card-meta
+        nzTitle="Listar Pokemon"
+        nzDescription="Liste Aqui todos os Pokemons"
+      ></nz-card-meta>
+
+      <p>
+        <button nz-button (click)="gotoList()" nzType="primary">
+          Buscar Pokemons
+        </button>
+      </p>
+    </nz-card>
+
+    <ng-template #coverTemplate>
+      <img
+        alt="example"
+        src="https://images.pexels.com/photos/63901/pexels-photo-63901.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+      />
+    </ng-template>
+
+    <button *nzSpaceItem nz-button nzType="primary">
+      Buscar Pokemon por Tipo
+    </button>
+    <button *nzSpaceItem nz-button nzType="primary">
+      Listar Pokemons Favoritos
+    </button>
+  </nz-space>
+</div>

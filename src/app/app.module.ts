@@ -1,5 +1,5 @@
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,9 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ListaFavoritosComponent } from './lista-favoritos/lista-favoritos.component';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { HomeComponent } from './home/home.component';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 registerLocaleData(en);
 
@@ -40,12 +43,16 @@ registerLocaleData(en);
     MostraPokeComponent,
     ModalPokemonComponent,
     ListaFavoritosComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot([{ path: 'pokemon', component: PokemonComponent }]),
+    RouterModule.forRoot([
+      { path: 'pokemon', component: PokemonComponent },
+      { path: 'mostra', component: MostraPokeComponent },
+    ]),
     FormsModule,
     BrowserAnimationsModule,
     NzTableModule,
@@ -58,8 +65,11 @@ registerLocaleData(en);
     NzPopoverModule,
     NzIconModule,
     NzGridModule,
+    NzSpaceModule,
+    NzCardModule,
   ],
   providers: [PokemonService, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
+  exports: [RouterModule],
 })
 export class AppModule {}
